@@ -1,0 +1,306 @@
+@use "variable" as v;
+@use "breakpoint" as b;
+@use "mixin" as m;
+
+// cards
+
+.ads_card {
+  @include b.xl {
+    background: v.$color_white;
+    padding: v.$spacing * 2;
+    border-radius: v.$spacing * 2;
+    cursor: pointer;
+    p {
+      margin-bottom: v.$spacing;
+      color: v.$color_gray;
+    }
+    img {
+      width: 100%;
+      height: v.$spacing * 20;
+      object-fit: cover;
+    }
+  }
+}
+
+.ads {
+  @include b.xl {
+    background: rgba(v.$color_white, 0.5);
+    height: 95dvh;
+    padding: v.$spacing * 2;
+    border-radius: v.$spacing * 2;
+    overflow: auto;
+    position: relative;
+    &_head {
+      margin-bottom: v.$spacing * 2;
+      p {
+        @include m.button(
+          $background: rgba(v.$color_white, 0.5),
+          $color: v.$color_gray,
+          $background_hover: v.$color_white,
+          $color_hover: v.$color_gray
+        );
+        width: max-content;
+      }
+    }
+    &_create {
+      @include m.dynamicPosition($pos: absolute, $left: 1%, $top: 7%);
+      @include m.dynamicAlign();
+      background: v.$color_white;
+      border-radius: v.$spacing * 2;
+      opacity: 0;
+      height: 0;
+      width: 0;
+      @include m.transition($second: 1s);
+      overflow: hidden;
+      &.active {
+        width: 98%;
+        opacity: 1;
+
+        height: v.$spacing * 62;
+        padding: v.$spacing * 2;
+      }
+
+      .create_info {
+        flex: 1;
+        @include m.dynamicAlign($direction: column);
+
+        .create_g {
+          @include m.dynamicAlign($direction: column);
+          width: 100%;
+          &_top {
+            @include m.dynamicAlign();
+          }
+          span {
+            font-size: v.$spacing * 1.6;
+            color: v.$color_gray;
+            font-style: italic;
+          }
+
+          input,
+          textarea,
+          select {
+            width: 100%;
+            padding: v.$spacing;
+            border-radius: v.$spacing * 2;
+            border: 0.1rem solid v.$color_gray;
+            font-size: v.$spacing * 1.6;
+            outline: none;
+          }
+
+          textarea {
+            height: v.$spacing * 15;
+            resize: none;
+          }
+        }
+
+        p {
+          @include m.button(
+            $background: rgba(v.$color_gray, 0.2),
+            $color: v.$color_gray,
+            $background_hover: rgba(v.$color_gray, 0.3),
+            $color_hover: v.$color_gray
+          );
+        }
+      }
+
+      .create_view {
+        flex: 1;
+        a {
+          display: block;
+          margin-top: v.$spacing * 3;
+          img {
+            width: 100%;
+            height: v.$spacing * 20;
+            object-fit: cover;
+            border-radius: v.$spacing;
+          }
+        }
+        &_vertical {
+          display: block;
+          height: v.$spacing * 30;
+          width: v.$spacing * 10;
+          img {
+            width: 100%;
+            height: 100% !important;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+
+    &_list {
+      @include m.dynamicAlign($wrap: wrap, $gap: v.$spacing * 2);
+      .ads_card {
+        width: calc((100% / 4) - v.$spacing * 2);
+      }
+    }
+  }
+}
+
+.detail_ads {
+  @include b.xl {
+    background: rgba(v.$color_white, 0.5);
+    height: 95dvh;
+    padding: v.$spacing * 2;
+    border-radius: v.$spacing * 2;
+    overflow: auto;
+    position: relative;
+    &_head {
+      margin-bottom: v.$spacing * 2;
+      @include m.dynamicAlign($align: center);
+      p {
+        @include m.button(
+          $background: rgba(v.$color_white, 0.5),
+          $color: v.$color_gray,
+          $background_hover: v.$color_white,
+          $color_hover: v.$color_gray
+        );
+        width: max-content;
+      }
+    }
+
+    .ads_delete {
+      background: v.$color_white;
+      margin-bottom: v.$spacing;
+      width: 0;
+      height: 0;
+      border-radius: v.$spacing;
+      overflow: hidden;
+      @include m.transition($second: 1s);
+      &.active {
+        padding: v.$spacing * 2;
+
+        width: v.$spacing * 20;
+        height: v.$spacing * 11;
+      }
+      h4 {
+        font-size: v.$spacing * 1.8;
+        text-align: center;
+        margin-bottom: v.$spacing;
+      }
+      .g {
+        @include m.dynamicAlign(center);
+        p {
+          @include m.button(
+            $background: rgba(v.$color_gray, 0.2),
+            $color: v.$color_gray,
+            $background_hover: rgba(v.$color_gray, 0.4),
+            $color_hover: v.$color_gray
+          );
+        }
+      }
+    }
+
+    .ads_create {
+      @include m.dynamicPosition($pos: absolute, $left: 1%, $top: 7%);
+      @include m.dynamicAlign();
+      background: v.$color_white;
+      border-radius: v.$spacing * 2;
+      opacity: 0;
+      height: 0;
+      width: 0;
+      @include m.transition($second: 1s);
+      overflow: hidden;
+
+      &.active {
+        width: 98%;
+        opacity: 1;
+        height: v.$spacing * 70;
+        padding: v.$spacing * 2;
+      }
+
+      .create_info {
+        flex: 1;
+        @include m.dynamicAlign($direction: column);
+
+        .create_g {
+          &_top {
+            @include m.dynamicAlign();
+          }
+          @include m.dynamicAlign($direction: column);
+          width: 100%;
+          height: 100%;
+          span {
+            font-size: v.$spacing * 1.6;
+            color: v.$color_gray;
+            font-style: italic;
+          }
+
+          input,
+          textarea {
+            width: 100%;
+            padding: v.$spacing;
+            border-radius: v.$spacing * 2;
+            border: 0.1rem solid v.$color_gray;
+            font-size: v.$spacing * 1.6;
+            outline: none;
+          }
+
+          textarea {
+            height: v.$spacing * 15;
+            resize: none;
+          }
+        }
+
+        p {
+          @include m.button(
+            $background: rgba(v.$color_gray, 0.2),
+            $color: v.$color_gray,
+            $background_hover: rgba(v.$color_gray, 0.3),
+            $color_hover: v.$color_gray
+          );
+        }
+      }
+
+      .create_view {
+        flex: 1;
+        a {
+          display: block;
+          margin-top: v.$spacing * 3;
+          img {
+            width: 100%;
+            height: v.$spacing * 20;
+            object-fit: cover;
+            border-radius: v.$spacing;
+          }
+        }
+        &_vertical {
+          display: block;
+          height: v.$spacing * 30;
+          width: v.$spacing * 10;
+          img {
+            width: 100%;
+            height: 100% !important;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+
+    &_view {
+      .view_g {
+        @include m.dynamicAlign($gap: v.$spacing * 5);
+        a {
+          display: block;
+          margin-top: v.$spacing * 3;
+          img {
+            width: 100%;
+            height: v.$spacing * 20;
+            object-fit: cover;
+            border-radius: v.$spacing;
+          }
+        }
+        &_vertical {
+          display: block;
+          height: v.$spacing * 30;
+          width: v.$spacing * 10;
+          img {
+            width: 100%;
+            height: 100% !important;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+  }
+}

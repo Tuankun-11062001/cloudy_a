@@ -1,0 +1,211 @@
+@use "variable" as v;
+@use "breakpoint" as b;
+@use "mixin" as m;
+
+// cards
+
+.ads_card {
+  @include b.xl {
+    background: v.$color_white;
+    padding: v.$spacing * 2;
+    border-radius: v.$spacing * 2;
+    cursor: pointer;
+    p {
+      margin-bottom: v.$spacing;
+      color: v.$color_gray;
+    }
+    img {
+      width: 100%;
+      height: v.$spacing * 20;
+      object-fit: cover;
+    }
+  }
+}
+
+.event {
+  @include b.xl {
+    background: rgba(v.$color_white, 0.5);
+    height: 95dvh;
+    padding: v.$spacing * 2;
+    border-radius: v.$spacing * 2;
+    overflow: auto;
+    position: relative;
+    &_head {
+      margin-bottom: v.$spacing * 2;
+      p {
+        @include m.button(
+          $background: rgba(v.$color_white, 0.5),
+          $color: v.$color_gray,
+          $background_hover: v.$color_white,
+          $color_hover: v.$color_gray
+        );
+        width: max-content;
+      }
+    }
+    &_create {
+      @include m.dynamicPosition($pos: absolute, $left: 1%, $top: 7%);
+      @include m.dynamicAlign();
+      background: v.$color_white;
+      border-radius: v.$spacing * 2;
+      opacity: 0;
+      height: 0;
+      width: 0;
+      @include m.transition($second: 1s);
+      overflow: hidden;
+      &.active {
+        width: 98%;
+        opacity: 1;
+
+        height: v.$spacing * 80;
+        padding: v.$spacing * 2;
+        overflow: auto;
+      }
+
+      .create_info {
+        flex: 1;
+        @include m.dynamicAlign($direction: column);
+
+        .create_g {
+          @include m.dynamicAlign($direction: column);
+          width: 100%;
+          span {
+            font-size: v.$spacing * 1.6;
+            color: v.$color_gray;
+            font-style: italic;
+          }
+
+          input,
+          textarea {
+            width: 100%;
+            padding: v.$spacing;
+            border-radius: v.$spacing * 2;
+            border: 0.1rem solid v.$color_gray;
+            font-size: v.$spacing * 1.6;
+            outline: none;
+          }
+
+          textarea {
+            height: v.$spacing * 15;
+            resize: none;
+          }
+
+          &_form {
+            @include m.dynamicAlign();
+            width: 100%;
+            input {
+              flex: 1;
+            }
+          }
+
+          &_list {
+            @include m.dynamicAlign($wrap: wrap);
+            margin-top: v.$spacing;
+            span {
+              width: v.$spacing * 5;
+              height: v.$spacing * 5;
+              position: relative;
+
+              p {
+                width: v.$spacing * 2.5;
+                height: v.$spacing * 2.5;
+                padding: unset;
+                @include m.dynamicPosition($pos: absolute, $right: 0, $top: 0);
+
+                @include m.dynamicAlign(center, center);
+                svg {
+                  width: v.$spacing * 1.8;
+                  height: v.$spacing * 1.8;
+                  object-fit: contain;
+                }
+              }
+
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 50%;
+              }
+            }
+          }
+        }
+
+        p {
+          @include m.button(
+            $background: rgba(v.$color_gray, 0.2),
+            $color: v.$color_gray,
+            $background_hover: rgba(v.$color_gray, 0.3),
+            $color_hover: v.$color_gray
+          );
+        }
+      }
+
+      .create_view {
+        flex: 1;
+        @include m.dynamicAlign($direction: column);
+        .banner {
+          width: 100%;
+          img {
+            width: 100%;
+            height: v.$spacing * 20;
+            object-fit: cover;
+            margin-bottom: v.$spacing;
+          }
+        }
+
+        .list_avatar {
+          @include m.dynamicAlign($wrap: wrap, $gap: v.$spacing * 2);
+
+          img {
+            width: v.$spacing * 5;
+            height: v.$spacing * 5;
+            object-fit: cover;
+          }
+        }
+
+        .list_banner {
+          @include m.dynamicAlign($wrap: wrap, $gap: v.$spacing * 2);
+
+          img {
+            width: v.$spacing * 25;
+            height: v.$spacing * 10;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+
+    .view {
+      @include m.dynamicAlign($direction: column);
+      .banner {
+        @include m.dynamicAlign($wrap: wrap);
+        width: 100%;
+        img {
+          width: 40%;
+          height: 50%;
+          object-fit: cover;
+          margin-bottom: v.$spacing;
+        }
+      }
+
+      .list_avatar {
+        @include m.dynamicAlign($wrap: wrap, $gap: v.$spacing * 2);
+
+        img {
+          width: v.$spacing * 10;
+          height: v.$spacing * 10;
+          object-fit: cover;
+        }
+      }
+
+      .list_banner {
+        @include m.dynamicAlign($wrap: wrap, $gap: v.$spacing * 2);
+
+        img {
+          width: v.$spacing * 25;
+          height: v.$spacing * 10;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}

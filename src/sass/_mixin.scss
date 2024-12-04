@@ -1,0 +1,89 @@
+@use "variable" as v;
+
+@mixin glass(
+  $background: rgba(v.$color_white, 0.2),
+  $blur: v.$spacing,
+  $shadow: 0 0 v.$spacing 0 rgba(v.$color_white, 0.1)
+) {
+  background: $background;
+  box-shadow: $shadow;
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+}
+
+@mixin transition($second: 0.3s, $type: ease, $delay: unset) {
+  transition: $second $type;
+  transition-delay: $delay;
+}
+
+@mixin longText($line: 3) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $line;
+}
+
+@mixin button(
+  $fontsize: v.$spacing * 1.6,
+  $padding: v.$spacing,
+  $background: unset,
+  $color: unset,
+  $shadow: unset,
+  $borderRadius: v.$spacing,
+  $background_hover: unset,
+  $color_hover: unset,
+  $shadow_hover: unset,
+  $background_active: unset,
+  $color_active: unset,
+  $shadow_active: unset,
+  $cursor: pointer
+) {
+  font-size: $fontsize;
+  padding: $padding;
+  background: $background;
+  color: $color;
+  box-shadow: $shadow;
+  border-radius: $borderRadius;
+  cursor: $cursor;
+  &:hover {
+    background: $background_hover;
+    color: $color_hover;
+    box-shadow: $shadow_hover;
+  }
+  &.active {
+    background: $background_active;
+    color: $color_active;
+    box-shadow: $shadow_active;
+  }
+}
+
+@mixin dynamicPosition(
+  $pos: relative,
+  $top: unset,
+  $left: unset,
+  $right: unset,
+  $bottom: unset,
+  $transform: unset
+) {
+  position: $pos;
+  top: $top;
+  left: $left;
+  bottom: $bottom;
+  right: $right;
+  transform: $transform;
+}
+
+@mixin dynamicAlign(
+  $justify: start,
+  $align: start,
+  $direction: row,
+  $gap: v.$spacing,
+  $wrap: nowrap
+) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+}

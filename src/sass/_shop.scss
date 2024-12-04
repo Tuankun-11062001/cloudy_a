@@ -1,0 +1,1449 @@
+@use "./breakpoint" as b;
+@use "./mixin" as m;
+@use "./variable" as v;
+
+// lyrics Card
+
+.shop_category_card {
+  @include b.xl {
+    background: rgba(v.$color_white, 0.5);
+    padding: v.$spacing * 2;
+    border-radius: v.$spacing * 2;
+    @include m.dynamicAlign(center, center, $direction: column);
+    position: relative;
+    overflow: hidden;
+
+    &_ask {
+      background: v.$color_white;
+      width: 0;
+      height: 0;
+      border-radius: v.$spacing;
+      overflow: hidden;
+      opacity: 0;
+      @include m.dynamicAlign(center, center, $direction: column);
+      @include m.transition($second: 0.5s);
+      &.active {
+        width: 100%;
+        opacity: 1;
+        height: v.$spacing * 10;
+        padding: v.$spacing;
+        overflow: unset;
+
+        h4 {
+          opacity: 1;
+        }
+        div {
+          opacity: 1;
+        }
+      }
+
+      h4 {
+        color: v.$color_gray;
+        opacity: 0;
+        @include m.transition($second: 0.3s, $delay: 0.5s);
+      }
+      &_g {
+        @include m.dynamicAlign(center, center);
+        @include m.transition($second: 0.3s, $delay: 0.5s);
+        opacity: 0;
+
+        p {
+          @include m.button(
+            $fontsize: v.$spacing * 1.4,
+            $padding: v.$spacing v.$spacing * 2 !important,
+            $background: rgba(v.$color_gray, 0.2) !important,
+            $background_hover: rgba(v.$color_gray, 0.1) !important
+          );
+        }
+      }
+    }
+    &_close {
+      @include m.dynamicPosition($pos: absolute, $right: 5%, $top: 5%);
+      @include m.button($padding: unset !important);
+      @include m.dynamicAlign(center, center);
+      width: v.$spacing * 3 !important;
+      height: v.$spacing * 3;
+      border-radius: v.$spacing * 3;
+      opacity: 1;
+      @include m.transition;
+      z-index: 1;
+      &.active {
+        opacity: 0;
+        z-index: -1;
+      }
+
+      svg {
+        pointer-events: none;
+      }
+      &:hover {
+        svg {
+          path {
+            stroke: v.$color_pink;
+          }
+        }
+      }
+
+      svg {
+        width: v.$spacing * 2;
+        height: v.$spacing * 2;
+        object-fit: contain;
+      }
+    }
+
+    img {
+      width: v.$spacing * 12;
+      height: v.$spacing * 12;
+      object-fit: cover;
+      border-radius: v.$spacing * 2;
+    }
+
+    h2 {
+      font-size: v.$spacing * 1.6;
+      font-weight: 600;
+      text-align: center;
+    }
+  }
+}
+
+.partner_card {
+  @include b.xl {
+    background: rgba(v.$color_white, 0.5);
+    padding: v.$spacing * 2;
+    border-radius: v.$spacing * 2;
+    @include m.dynamicAlign(center, center, $direction: column);
+    position: relative;
+    overflow: hidden;
+
+    &_ask {
+      background: v.$color_white;
+      width: 0;
+      height: 0;
+      border-radius: v.$spacing;
+      overflow: hidden;
+      opacity: 0;
+      @include m.dynamicAlign(center, center, $direction: column);
+      @include m.transition($second: 0.5s);
+      &.active {
+        width: 100%;
+        opacity: 1;
+        height: v.$spacing * 10;
+        padding: v.$spacing;
+        overflow: unset;
+
+        h4 {
+          opacity: 1;
+        }
+        div {
+          opacity: 1;
+        }
+      }
+
+      h4 {
+        color: v.$color_gray;
+        opacity: 0;
+        @include m.transition($second: 0.3s, $delay: 0.5s);
+      }
+      &_g {
+        @include m.dynamicAlign(center, center);
+        @include m.transition($second: 0.3s, $delay: 0.5s);
+        opacity: 0;
+
+        p {
+          @include m.button(
+            $fontsize: v.$spacing * 1.4,
+            $padding: v.$spacing v.$spacing * 2 !important,
+            $background: rgba(v.$color_gray, 0.2) !important,
+            $background_hover: rgba(v.$color_gray, 0.1) !important
+          );
+        }
+      }
+    }
+    &_close {
+      @include m.dynamicPosition($pos: absolute, $right: 5%, $top: 5%);
+      @include m.button($padding: unset !important);
+      @include m.dynamicAlign(center, center);
+      width: v.$spacing * 3 !important;
+      height: v.$spacing * 3;
+      border-radius: v.$spacing * 3;
+      opacity: 1;
+      @include m.transition;
+      z-index: 1;
+      &.active {
+        opacity: 0;
+        z-index: -1;
+      }
+
+      svg {
+        pointer-events: none;
+      }
+      &:hover {
+        svg {
+          path {
+            stroke: v.$color_pink;
+          }
+        }
+      }
+
+      svg {
+        width: v.$spacing * 2;
+        height: v.$spacing * 2;
+        object-fit: contain;
+      }
+    }
+
+    img {
+      width: v.$spacing * 12;
+      height: v.$spacing * 12;
+      object-fit: cover;
+      border-radius: v.$spacing * 2;
+    }
+
+    h2 {
+      font-size: v.$spacing * 1.6;
+      font-weight: 600;
+      text-align: center;
+    }
+  }
+}
+
+.lyrics_albums_card {
+  @include b.xl {
+    background: rgba(v.$color_white, 0.5);
+    padding: v.$spacing * 2;
+    border-radius: v.$spacing * 2;
+    @include m.dynamicAlign(center, center, $direction: column);
+    position: relative;
+    overflow: hidden;
+
+    &_ask {
+      background: v.$color_white;
+      width: 0;
+      height: 0;
+      border-radius: v.$spacing;
+      overflow: hidden;
+      opacity: 0;
+      @include m.dynamicAlign(center, center, $direction: column);
+      @include m.transition($second: 0.5s);
+      &.active {
+        width: 100%;
+        opacity: 1;
+        height: v.$spacing * 10;
+        padding: v.$spacing;
+        overflow: unset;
+
+        h4 {
+          opacity: 1;
+        }
+        div {
+          opacity: 1;
+        }
+      }
+
+      h4 {
+        color: v.$color_gray;
+        opacity: 0;
+        @include m.transition($second: 0.3s, $delay: 0.5s);
+      }
+      &_g {
+        @include m.dynamicAlign(center, center);
+        @include m.transition($second: 0.3s, $delay: 0.5s);
+        opacity: 0;
+
+        p {
+          @include m.button(
+            $fontsize: v.$spacing * 1.4,
+            $padding: v.$spacing v.$spacing * 2 !important,
+            $background: rgba(v.$color_gray, 0.2) !important,
+            $background_hover: rgba(v.$color_gray, 0.1) !important
+          );
+        }
+      }
+    }
+    &_close {
+      @include m.dynamicPosition($pos: absolute, $right: 5%, $top: 5%);
+      @include m.button($padding: unset !important);
+      @include m.dynamicAlign(center, center);
+      width: v.$spacing * 3 !important;
+      height: v.$spacing * 3;
+      border-radius: v.$spacing * 3;
+      opacity: 1;
+      @include m.transition;
+      z-index: 1;
+      &.active {
+        opacity: 0;
+        z-index: -1;
+      }
+
+      svg {
+        pointer-events: none;
+      }
+      &:hover {
+        svg {
+          path {
+            stroke: v.$color_pink;
+          }
+        }
+      }
+
+      svg {
+        width: v.$spacing * 2;
+        height: v.$spacing * 2;
+        object-fit: contain;
+      }
+    }
+
+    img {
+      width: v.$spacing * 12;
+      height: v.$spacing * 12;
+      object-fit: cover;
+      border-radius: v.$spacing * 2;
+    }
+
+    h2 {
+      font-size: v.$spacing * 1.6;
+      font-weight: 600;
+      text-align: center;
+    }
+  }
+}
+
+.lyrics_singer_card {
+  @include b.xl {
+    background: rgba(v.$color_white, 0.5);
+    padding: v.$spacing * 2;
+    border-radius: v.$spacing * 2;
+    @include m.dynamicAlign(center, center, $direction: column);
+    position: relative;
+    overflow: hidden;
+
+    &_ask {
+      background: v.$color_white;
+      width: 0;
+      height: 0;
+      border-radius: v.$spacing;
+      overflow: hidden;
+      opacity: 0;
+      @include m.dynamicAlign(center, center, $direction: column);
+      @include m.transition($second: 0.5s);
+      &.active {
+        width: 100%;
+        opacity: 1;
+        height: v.$spacing * 10;
+        padding: v.$spacing;
+        overflow: unset;
+
+        h4 {
+          opacity: 1;
+        }
+        div {
+          opacity: 1;
+        }
+      }
+
+      h4 {
+        color: v.$color_gray;
+        opacity: 0;
+        @include m.transition($second: 0.3s, $delay: 0.5s);
+      }
+      &_g {
+        @include m.dynamicAlign(center, center);
+        @include m.transition($second: 0.3s, $delay: 0.5s);
+        opacity: 0;
+
+        p {
+          @include m.button(
+            $fontsize: v.$spacing * 1.4,
+            $padding: v.$spacing v.$spacing * 2 !important,
+            $background: rgba(v.$color_gray, 0.2) !important,
+            $background_hover: rgba(v.$color_gray, 0.1) !important
+          );
+        }
+      }
+    }
+    &_close {
+      @include m.dynamicPosition($pos: absolute, $right: 5%, $top: 5%);
+      @include m.button($padding: unset !important);
+      @include m.dynamicAlign(center, center);
+      width: v.$spacing * 3 !important;
+      height: v.$spacing * 3;
+      border-radius: v.$spacing * 3;
+      opacity: 1;
+      @include m.transition;
+      z-index: 1;
+      &.active {
+        opacity: 0;
+        z-index: -1;
+      }
+
+      svg {
+        pointer-events: none;
+      }
+      &:hover {
+        svg {
+          path {
+            stroke: v.$color_pink;
+          }
+        }
+      }
+
+      svg {
+        width: v.$spacing * 2;
+        height: v.$spacing * 2;
+        object-fit: contain;
+      }
+    }
+
+    img {
+      width: v.$spacing * 12;
+      height: v.$spacing * 12;
+      object-fit: cover;
+      border-radius: v.$spacing * 2;
+    }
+
+    h2 {
+      font-size: v.$spacing * 1.6;
+      font-weight: 600;
+      text-align: center;
+    }
+  }
+}
+
+.shop_card {
+  @include b.xl {
+    @include m.dynamicAlign($align: center);
+    @include m.transition;
+    border-radius: v.$spacing;
+    padding: v.$spacing 0;
+    cursor: pointer;
+    &:hover {
+      background: v.$color_white;
+    }
+    abbr {
+      text-decoration: none;
+    }
+    .shop_title {
+      width: v.$spacing * 15;
+      @include m.longText(2);
+    }
+    p {
+      text-align: center;
+      color: v.$color_gray;
+      &:first-child {
+        width: v.$spacing * 5;
+      }
+      width: v.$spacing * 9.5;
+      @include m.longText(1);
+    }
+
+    svg {
+      path {
+        fill: v.$color_pink;
+      }
+    }
+  }
+}
+
+.shop {
+  @include b.xl {
+    &_tabs {
+      @include m.dynamicAlign($align: center, $gap: v.$spacing * 3);
+      p {
+        @include m.transition;
+        @include m.button(
+          $background: rgba(v.$color_white, 0.7),
+          $padding: v.$spacing v.$spacing * 3,
+          $color: v.$color_gray,
+          $background_hover: v.$color_white,
+          $background_active: v.$color_white
+        );
+      }
+    }
+
+    &_container {
+      position: relative;
+      .tab_content {
+        @include m.dynamicPosition(
+          $pos: absolute,
+          $left: 0,
+          $right: 0,
+          $top: 0
+        );
+        padding: v.$spacing * 2;
+        z-index: -1;
+        opacity: 0;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+        @include m.transition($second: 1s);
+        border-radius: v.$spacing * 2;
+        margin-top: v.$spacing * 2;
+        @include m.glass($background: rgba(v.$color_white, 0.5));
+        &.active {
+          z-index: 3;
+          opacity: 1;
+          width: 100%;
+          height: 90dvh;
+          overflow: auto;
+        }
+      }
+
+      // lyrics content
+      .shop_content {
+        &_head {
+          @include m.dynamicAlign(
+            $align: center,
+            $gap: v.$spacing * 3,
+            $wrap: wrap
+          );
+          span {
+            font-size: v.$spacing * 1.4;
+            font-style: italic;
+            color: v.$color_gray;
+          }
+
+          p,
+          select,
+          input {
+            @include m.button(
+              $background: rgba(v.$color_white, 0.5),
+              $color: v.$color_gray,
+              $background_hover: v.$color_white,
+              $color_hover: v.$color_gray,
+              $background_active: v.$color_white,
+              $color_active: v.$color_gray,
+              $padding: v.$spacing v.$spacing * 3
+            );
+            &:focus {
+              color: v.$color_gray;
+              background: v.$color_white;
+            }
+            border: unset;
+            outline: none;
+          }
+        }
+
+        &_create {
+          margin-top: v.$spacing * 2;
+          @include m.dynamicAlign($gap: v.$spacing * 3);
+          background: rgba(v.$color_white, 0.5);
+          border-radius: v.$spacing * 2;
+          box-shadow: 0 0 v.$spacing * 2 0 rgba(v.$color_gray, 0.2);
+          margin-bottom: v.$spacing * 2;
+
+          width: 0;
+          height: 0;
+          opacity: 0;
+          overflow: hidden;
+          @include m.transition($second: 1s);
+          &.active {
+            padding: v.$spacing * 2;
+            width: 95%;
+            height: 90%;
+            opacity: 1;
+            overflow: auto;
+          }
+
+          .submit {
+            @include m.transition;
+            @include m.button(
+              $background: rgba(v.$color_white, 0.7),
+              $padding: v.$spacing v.$spacing * 3,
+              $color: v.$color_gray,
+              $background_hover: v.$color_white,
+              $background_active: v.$color_white
+            );
+          }
+
+          &_left,
+          &_right {
+            @include m.dynamicAlign($direction: column, $gap: v.$spacing * 2);
+          }
+          &_left {
+            flex: 1;
+          }
+
+          &_right {
+            flex: 1;
+            position: relative;
+
+            .box_editor {
+              .control_group {
+                margin-bottom: v.$spacing;
+                button,
+                p {
+                  font-size: v.$spacing * 1.4;
+                  padding: v.$spacing;
+                }
+              }
+            }
+          }
+
+          .create_g {
+            @include m.dynamicAlign($direction: column);
+            width: 100%;
+            span {
+              color: v.$color_gray;
+              font-style: italic;
+            }
+
+            input,
+            select {
+              width: 100%;
+              padding: v.$spacing v.$spacing * 2;
+              background: v.$color_white;
+              border: none;
+              border-radius: v.$spacing * 2;
+              font-size: v.$spacing * 1.6;
+              border: 0.1rem solid transparent;
+              outline: none;
+              &:focus {
+                box-shadow: 0 0 v.$spacing * 2 0 rgba(v.$color_gray, 0.2);
+                border: 0.1rem solid rgba(v.$color_gray, 0.4);
+              }
+            }
+
+            textarea {
+              width: 100%;
+              padding: v.$spacing v.$spacing * 2;
+              background: v.$color_white;
+              border: none;
+              border-radius: v.$spacing * 2;
+              font-size: v.$spacing * 1.6;
+              border: 0.1rem solid transparent;
+              outline: none;
+              height: v.$spacing * 20;
+              resize: none;
+              &:focus {
+                box-shadow: 0 0 v.$spacing * 2 0 rgba(v.$color_gray, 0.2);
+                border: 0.1rem solid rgba(v.$color_gray, 0.4);
+              }
+            }
+
+            .head_image {
+              @include m.dynamicAlign($align: center);
+              width: 100%;
+              input {
+                flex: 1;
+              }
+              p {
+                margin-left: auto;
+                color: v.$color_gray;
+                cursor: pointer;
+                @include m.transition;
+                &:hover {
+                  color: v.$color_pink;
+                }
+              }
+            }
+
+            .list_image {
+              @include m.dynamicAlign($wrap: wrap);
+              .item_image {
+                position: relative;
+                border: 0 solid v.$color_pink;
+                cursor: pointer;
+
+                &.active {
+                  border: v.$spacing - 0.8 solid v.$color_pink;
+                }
+                img {
+                  width: v.$spacing * 7;
+                  height: v.$spacing * 10;
+                  object-fit: contain;
+                }
+
+                &_control {
+                  @include m.dynamicPosition(
+                    $pos: absolute,
+                    $top: 0,
+                    $right: 0
+                  );
+                  @include m.dynamicAlign($gap: v.$spacing - 0.5);
+                  p {
+                    @include m.dynamicAlign(center, center);
+                    width: v.$spacing * 3;
+                    height: v.$spacing * 3;
+                    svg {
+                      width: v.$spacing * 2;
+                      height: v.$spacing * 2;
+                      object-fit: contain;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        &_list {
+          &_head {
+            @include m.dynamicAlign($align: center);
+            .shop_title {
+              width: v.$spacing * 15;
+            }
+            p {
+              text-align: center;
+              color: v.$color_gray;
+              &:first-child {
+                width: v.$spacing * 5;
+              }
+              width: v.$spacing * 9.5;
+            }
+            span {
+              flex: 1;
+            }
+          }
+
+          &_content {
+            margin-top: v.$spacing * 2;
+            @include m.dynamicAlign($direction: column, $gap: v.$spacing * 2);
+          }
+        }
+      }
+
+      // lyrics category
+
+      .shop_category_content {
+        p {
+          @include m.transition;
+          @include m.button(
+            $background: rgba(v.$color_white, 0.7),
+            $padding: v.$spacing v.$spacing * 3,
+            $color: v.$color_gray,
+            $background_hover: v.$color_white
+          );
+          width: max-content;
+        }
+
+        .shop_category_create {
+          margin-top: v.$spacing * 2;
+          @include m.dynamicAlign($direction: column, $gap: v.$spacing * 2);
+          background: rgba(v.$color_white, 0.5);
+          border-radius: v.$spacing * 2;
+          box-shadow: 0 0 v.$spacing * 2 0 rgba(v.$color_gray, 0.2);
+          margin-bottom: v.$spacing * 2;
+
+          width: 0;
+          height: 0;
+          opacity: 0;
+          overflow: hidden;
+          @include m.transition($second: 1s);
+          &.active {
+            padding: v.$spacing * 2;
+            width: 50%;
+            height: v.$spacing * 26;
+            opacity: 1;
+            overflow: unset;
+          }
+          .create_g {
+            @include m.dynamicAlign($direction: column);
+            width: 100%;
+            span {
+              color: v.$color_gray;
+              font-style: italic;
+            }
+
+            input {
+              width: 100%;
+              padding: v.$spacing v.$spacing * 2;
+              background: v.$color_white;
+              border: none;
+              border-radius: v.$spacing * 2;
+              font-size: v.$spacing * 1.6;
+              border: 0.1rem solid transparent;
+              outline: none;
+              &:focus {
+                box-shadow: 0 0 v.$spacing * 2 0 rgba(v.$color_gray, 0.2);
+                border: 0.1rem solid rgba(v.$color_gray, 0.4);
+              }
+            }
+          }
+        }
+
+        &_list {
+          @include m.dynamicAlign($wrap: wrap, $gap: v.$spacing * 2);
+          .lyrics_category_card {
+            width: calc((100% / 7) - v.$spacing * 2);
+          }
+        }
+      }
+
+      // lyrics country
+
+      .partner_content {
+        p {
+          @include m.transition;
+          @include m.button(
+            $background: rgba(v.$color_white, 0.7),
+            $padding: v.$spacing v.$spacing * 3,
+            $color: v.$color_gray,
+            $background_hover: v.$color_white
+          );
+          width: max-content;
+        }
+
+        .partner_create {
+          margin-top: v.$spacing * 2;
+          @include m.dynamicAlign($direction: column, $gap: v.$spacing * 2);
+          background: rgba(v.$color_white, 0.5);
+          border-radius: v.$spacing * 2;
+          box-shadow: 0 0 v.$spacing * 2 0 rgba(v.$color_gray, 0.2);
+          margin-bottom: v.$spacing * 2;
+
+          width: 0;
+          height: 0;
+          opacity: 0;
+          overflow: hidden;
+          @include m.transition($second: 1s);
+          &.active {
+            padding: v.$spacing * 2;
+            width: 50%;
+            height: v.$spacing * 26;
+            opacity: 1;
+            overflow: unset;
+          }
+          .create_g {
+            @include m.dynamicAlign($direction: column);
+            width: 100%;
+            span {
+              color: v.$color_gray;
+              font-style: italic;
+            }
+
+            input {
+              width: 100%;
+              padding: v.$spacing v.$spacing * 2;
+              background: v.$color_white;
+              border: none;
+              border-radius: v.$spacing * 2;
+              font-size: v.$spacing * 1.6;
+              border: 0.1rem solid transparent;
+              outline: none;
+              &:focus {
+                box-shadow: 0 0 v.$spacing * 2 0 rgba(v.$color_gray, 0.2);
+                border: 0.1rem solid rgba(v.$color_gray, 0.4);
+              }
+            }
+          }
+        }
+
+        &_list {
+          @include m.dynamicAlign($wrap: wrap, $gap: v.$spacing * 2);
+          .lyrics_country_card {
+            width: calc((100% / 7) - v.$spacing * 2);
+          }
+        }
+      }
+
+      // lyrics albums
+
+      .lyrics_albums_content {
+        p {
+          @include m.transition;
+          @include m.button(
+            $background: rgba(v.$color_white, 0.7),
+            $padding: v.$spacing v.$spacing * 3,
+            $color: v.$color_gray,
+            $background_hover: v.$color_white
+          );
+          width: max-content;
+        }
+
+        .lyrics_albums_create {
+          margin-top: v.$spacing * 2;
+          @include m.dynamicAlign($direction: column, $gap: v.$spacing * 2);
+          background: rgba(v.$color_white, 0.5);
+          border-radius: v.$spacing * 2;
+          box-shadow: 0 0 v.$spacing * 2 0 rgba(v.$color_gray, 0.2);
+          margin-bottom: v.$spacing * 2;
+
+          width: 0;
+          height: 0;
+          opacity: 0;
+          overflow: hidden;
+          @include m.transition($second: 1s);
+          &.active {
+            padding: v.$spacing * 2;
+            width: 80%;
+            height: 80%;
+            opacity: 1;
+            overflow: auto;
+          }
+          .create_g {
+            @include m.dynamicAlign($direction: column);
+            width: 100%;
+            span {
+              color: v.$color_gray;
+              font-style: italic;
+            }
+
+            input,
+            select {
+              width: 100%;
+              padding: v.$spacing v.$spacing * 2;
+              background: v.$color_white;
+              border: none;
+              border-radius: v.$spacing * 2;
+              font-size: v.$spacing * 1.6;
+              border: 0.1rem solid transparent;
+              outline: none;
+              &:focus {
+                box-shadow: 0 0 v.$spacing * 2 0 rgba(v.$color_gray, 0.2);
+                border: 0.1rem solid rgba(v.$color_gray, 0.4);
+              }
+            }
+
+            textarea {
+              width: 100%;
+              padding: v.$spacing v.$spacing * 2;
+              background: v.$color_white;
+              border: none;
+              border-radius: v.$spacing * 2;
+              font-size: v.$spacing * 1.6;
+              border: 0.1rem solid transparent;
+              outline: none;
+              height: v.$spacing * 20;
+              resize: none;
+              &:focus {
+                box-shadow: 0 0 v.$spacing * 2 0 rgba(v.$color_gray, 0.2);
+                border: 0.1rem solid rgba(v.$color_gray, 0.4);
+              }
+            }
+          }
+
+          &_middle {
+            @include m.dynamicAlign();
+            width: 100%;
+          }
+
+          .album_singer_list {
+            .item {
+              @include m.dynamicAlign($align: center);
+              padding: v.$spacing;
+              background: rgba(v.$color_white, 0.5);
+              border-radius: v.$spacing;
+
+              img {
+                width: v.$spacing * 3;
+                height: v.$spacing * 3;
+                object-fit: cover;
+                border-radius: 50%;
+              }
+              p {
+                width: v.$spacing * 3;
+                height: v.$spacing * 3;
+                @include m.dynamicAlign(center, center);
+                padding: unset !important;
+                border-radius: v.$spacing * 3;
+                svg {
+                  width: v.$spacing * 1.6;
+                  height: v.$spacing * 1.6;
+                  object-fit: contain;
+                }
+              }
+            }
+          }
+        }
+
+        &_list {
+          @include m.dynamicAlign($wrap: wrap, $gap: v.$spacing * 2);
+          .lyrics_albums_card {
+            width: calc((100% / 7) - v.$spacing * 2);
+          }
+        }
+      }
+
+      // lyrics singer
+
+      .lyrics_singer_content {
+        p {
+          @include m.transition;
+          @include m.button(
+            $background: rgba(v.$color_white, 0.7),
+            $padding: v.$spacing v.$spacing * 3,
+            $color: v.$color_gray,
+            $background_hover: v.$color_white
+          );
+          width: max-content;
+        }
+
+        .lyrics_singer_create {
+          margin-top: v.$spacing * 2;
+          @include m.dynamicAlign($direction: column, $gap: v.$spacing * 2);
+          background: rgba(v.$color_white, 0.5);
+          border-radius: v.$spacing * 2;
+          box-shadow: 0 0 v.$spacing * 2 0 rgba(v.$color_gray, 0.2);
+          margin-bottom: v.$spacing * 2;
+
+          width: 0;
+          height: 0;
+          opacity: 0;
+          overflow: hidden;
+          @include m.transition($second: 1s);
+          &.active {
+            padding: v.$spacing * 2;
+            width: 60%;
+            height: v.$spacing * 69;
+            opacity: 1;
+            overflow: unset;
+          }
+
+          &_head {
+            @include m.dynamicAlign();
+            width: 100%;
+          }
+
+          &_left,
+          &_right {
+            flex: 1;
+            @include m.dynamicAlign($direction: column);
+          }
+
+          &_right {
+            &_g {
+              @include m.dynamicAlign();
+              width: 100%;
+              select {
+                flex: 0.7;
+              }
+              input {
+                flex: 1;
+              }
+            }
+
+            &_list_social {
+              margin-top: v.$spacing;
+              width: 100%;
+              @include m.dynamicAlign($direction: column);
+              .list_g {
+                @include m.dynamicAlign($align: center);
+                width: 100%;
+                span {
+                  color: v.$color_gray;
+                  &:first-child {
+                    width: v.$spacing * 10;
+                  }
+                  &:last-child {
+                    flex: 1;
+                  }
+                }
+                p {
+                  padding: v.$spacing;
+                  font-size: v.$spacing * 1.4;
+                  margin-left: auto;
+                }
+              }
+            }
+          }
+
+          .create_g {
+            @include m.dynamicAlign($direction: column);
+            width: 100%;
+            span {
+              color: v.$color_gray;
+              font-style: italic;
+            }
+
+            input {
+              width: 100%;
+              padding: v.$spacing v.$spacing * 2;
+              background: v.$color_white;
+              border: none;
+              border-radius: v.$spacing * 2;
+              font-size: v.$spacing * 1.6;
+              border: 0.1rem solid transparent;
+              outline: none;
+              &:focus {
+                box-shadow: 0 0 v.$spacing * 2 0 rgba(v.$color_gray, 0.2);
+                border: 0.1rem solid rgba(v.$color_gray, 0.4);
+              }
+            }
+
+            select {
+              width: 100%;
+              padding: v.$spacing v.$spacing * 2;
+              background: v.$color_white;
+              border: none;
+              border-radius: v.$spacing * 2;
+              font-size: v.$spacing * 1.6;
+              border: 0.1rem solid transparent;
+              outline: none;
+              color: v.$color_gray;
+              resize: none;
+              &:focus {
+                box-shadow: 0 0 v.$spacing * 2 0 rgba(v.$color_gray, 0.2);
+                border: 0.1rem solid rgba(v.$color_gray, 0.4);
+              }
+            }
+
+            textarea {
+              width: 100%;
+              padding: v.$spacing v.$spacing * 2;
+              background: v.$color_white;
+              border: none;
+              border-radius: v.$spacing * 2;
+              font-size: v.$spacing * 1.6;
+              border: 0.1rem solid transparent;
+              outline: none;
+              height: v.$spacing * 20;
+              resize: none;
+              &:focus {
+                box-shadow: 0 0 v.$spacing * 2 0 rgba(v.$color_gray, 0.2);
+                border: 0.1rem solid rgba(v.$color_gray, 0.4);
+              }
+            }
+          }
+        }
+
+        &_list {
+          @include m.dynamicAlign($wrap: wrap, $gap: v.$spacing * 2);
+          .lyrics_albums_card {
+            width: calc((100% / 7) - v.$spacing * 2);
+          }
+        }
+      }
+    }
+  }
+}
+
+.shop_detail {
+  @include b.xl {
+    .back {
+      width: v.$spacing * 4;
+      height: v.$spacing * 4;
+      background: v.$color_white;
+      border-radius: v.$spacing * 5;
+      @include m.dynamicAlign(center, center);
+      cursor: pointer;
+      @include m.transition;
+      svg {
+        transform: rotate(90deg);
+      }
+      &:hover {
+        background: v.$color_pink;
+        svg {
+          path {
+            stroke: v.$color_white;
+          }
+        }
+      }
+      svg {
+        path {
+          stroke: v.$color_gray;
+        }
+      }
+    }
+
+    .shop_content_create {
+      margin-top: v.$spacing * 2;
+      @include m.dynamicAlign($gap: v.$spacing * 3);
+      @include m.glass(
+        $background: rgba(v.$color_white, 1),
+        $blur: v.$spacing - 0.3
+      );
+      border-radius: v.$spacing * 2;
+      box-shadow: 0 0 v.$spacing * 2 0 rgba(v.$color_gray, 0.2);
+      margin-bottom: v.$spacing * 2;
+
+      width: 0;
+      height: 0;
+      opacity: 0;
+      overflow: hidden;
+      @include m.transition($second: 1s);
+      @include m.dynamicPosition($pos: absolute, $left: 0, $top: 5%);
+      z-index: -1;
+      &.active {
+        padding: v.$spacing * 2;
+        width: 95%;
+        height: 90%;
+        opacity: 1;
+        overflow: auto;
+        z-index: 5;
+      }
+
+      .submit {
+        @include m.transition;
+        @include m.button(
+          $background: rgba(v.$color_white, 0.7),
+          $padding: v.$spacing v.$spacing * 3,
+          $color: v.$color_gray,
+          $background_hover: v.$color_white,
+          $background_active: v.$color_white
+        );
+      }
+
+      &_left,
+      &_right {
+        @include m.dynamicAlign($direction: column, $gap: v.$spacing * 2);
+      }
+      &_left {
+        flex: 1;
+        .message {
+          background: rgba(v.$color_gray, 0.1);
+          width: 100%;
+          padding: v.$spacing;
+          border-radius: v.$spacing;
+          color: v.$color_gray;
+          text-align: center;
+        }
+        .create_head_g {
+          @include m.dynamicAlign($align: center);
+          width: 100%;
+          .create_g {
+            flex: 1;
+          }
+        }
+      }
+
+      &_right {
+        flex: 1;
+        position: relative;
+
+        .box_editor {
+          .control_group {
+            margin-bottom: v.$spacing;
+            button,
+            p {
+              font-size: v.$spacing * 1.4;
+              padding: v.$spacing;
+            }
+          }
+        }
+      }
+
+      .create_g {
+        @include m.dynamicAlign($direction: column);
+        width: 100%;
+        span {
+          color: v.$color_gray;
+          font-style: italic;
+        }
+
+        input,
+        select {
+          width: 100%;
+          padding: v.$spacing v.$spacing * 2;
+          background: v.$color_white;
+
+          border-radius: v.$spacing * 2;
+          font-size: v.$spacing * 1.6;
+          border: 0.1rem solid rgba(v.$color_gray, 0.2);
+          outline: none;
+          &:focus {
+            box-shadow: 0 0 v.$spacing * 2 0 rgba(v.$color_gray, 0.2);
+            border: 0.1rem solid rgba(v.$color_gray, 0.4);
+          }
+        }
+
+        textarea {
+          width: 100%;
+          padding: v.$spacing v.$spacing * 2;
+          background: v.$color_white;
+          border: none;
+          border-radius: v.$spacing * 2;
+          font-size: v.$spacing * 1.6;
+          border: 0.1rem solid rgba(v.$color_gray, 0.2);
+          outline: none;
+          height: v.$spacing * 20;
+          resize: none;
+          &:focus {
+            box-shadow: 0 0 v.$spacing * 2 0 rgba(v.$color_gray, 0.2);
+            border: 0.1rem solid rgba(v.$color_gray, 0.4);
+          }
+        }
+
+        .head_image {
+          @include m.dynamicAlign($align: center);
+          width: 100%;
+          input {
+            flex: 1;
+          }
+          p {
+            margin-left: auto;
+            color: v.$color_gray;
+            cursor: pointer;
+            @include m.transition;
+            &:hover {
+              color: v.$color_pink;
+            }
+          }
+        }
+
+        .list_image {
+          @include m.dynamicAlign($wrap: wrap);
+          .item_image {
+            position: relative;
+            border: 0 solid v.$color_pink;
+            cursor: pointer;
+
+            &.active {
+              border: v.$spacing - 0.8 solid v.$color_pink;
+            }
+            img {
+              width: v.$spacing * 7;
+              height: v.$spacing * 10;
+              object-fit: contain;
+            }
+
+            &_control {
+              @include m.dynamicPosition($pos: absolute, $top: 0, $right: 0);
+              @include m.dynamicAlign($gap: v.$spacing - 0.5);
+              p {
+                @include m.dynamicAlign(center, center);
+                width: v.$spacing * 3;
+                height: v.$spacing * 3;
+                svg {
+                  width: v.$spacing * 2;
+                  height: v.$spacing * 2;
+                  object-fit: contain;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &_content {
+      @include m.glass($background: rgba(v.$color_white, 0.5));
+      margin-top: v.$spacing;
+      padding: v.$spacing * 2;
+      height: 92dvh;
+      border-radius: v.$spacing * 2;
+      width: 100%;
+      overflow: auto;
+      @include m.dynamicAlign($gap: v.$spacing * 4);
+      position: relative;
+
+      &_info {
+        width: 100%;
+        .top {
+          @include m.dynamicAlign($align: center);
+          margin-bottom: v.$spacing;
+          &_comfirm {
+            @include m.dynamicAlign($align: center);
+            background: rgba(v.$color_white, 0.5);
+            border-radius: v.$spacing * 2;
+            width: 0;
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+            @include m.transition($second: 1s);
+            &.active {
+              height: v.$spacing * 5;
+              width: v.$spacing * 28;
+              padding: v.$spacing v.$spacing * 2;
+              opacity: 1;
+            }
+            h4 {
+              color: v.$color_gray;
+            }
+          }
+          p {
+            @include m.transition;
+            @include m.button(
+              $background: rgba(v.$color_white, 0.7),
+              $padding: v.$spacing v.$spacing * 2,
+              $color: v.$color_gray,
+              $background_hover: v.$color_white,
+              $background_active: v.$color_white,
+              $fontsize: v.$spacing * 1.4
+            );
+          }
+        }
+
+        .head {
+          @include m.dynamicAlign($direction: column);
+          width: 100%;
+          h1 {
+            font-size: v.$spacing * 2;
+            color: v.$color_gray;
+          }
+          p {
+            color: v.$color_gray;
+          }
+
+          &_box {
+            @include m.dynamicAlign($gap: v.$spacing * 2, $wrap: wrap);
+            width: 100%;
+            .item {
+              width: calc((100% / 5) - v.$spacing * 2);
+              @include m.dynamicAlign($direction: column, $align: center);
+              background: rgba(v.$color_white, 0.5);
+              padding: v.$spacing;
+              border-radius: v.$spacing * 2;
+              box-shadow: 0 0 v.$spacing * 2 0 rgba(v.$color_gray, 0.2);
+              h4 {
+                font-size: v.$spacing * 1.6;
+                font-weight: 500;
+                color: v.$color_gray;
+              }
+              svg {
+                path {
+                  fill: v.$color_pink;
+                }
+              }
+            }
+          }
+        }
+
+        .content {
+          padding: v.$spacing * 2;
+          margin-top: v.$spacing * 2;
+          @include m.glass();
+        }
+      }
+      &_relative {
+        flex: 0.5;
+
+        .shop_relative_other {
+          position: relative;
+          height: v.$spacing * 35;
+          .other_head {
+            @include m.dynamicAlign($align: center);
+            p {
+              @include m.button(
+                $background: rgba(v.$color_white, 0.7),
+                $padding: v.$spacing v.$spacing * 3,
+                $color: v.$color_gray,
+                $background_hover: v.$color_white,
+                $background_active: v.$color_white
+              );
+            }
+          }
+
+          .other_content {
+            @include m.dynamicPosition($pos: absolute, $left: 0, $top: 15%);
+            background: rgba(v.$color_white, 0.5);
+            width: 0;
+            height: 0;
+            z-index: -1;
+            opacity: 0;
+            overflow: hidden;
+            border-radius: v.$spacing;
+            box-shadow: 0 0 v.$spacing * 2 0 rgba(v.$color_gray, 0.2);
+            @include m.transition($second: 1s);
+            &.active {
+              width: 100%;
+              height: v.$spacing * 30;
+              z-index: 3;
+              opacity: 1;
+              padding: v.$spacing;
+              border-radius: v.$spacing;
+            }
+
+            img,
+            iframe {
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+            }
+          }
+        }
+      }
+      &_comments {
+        flex: 0.4;
+      }
+    }
+  }
+}

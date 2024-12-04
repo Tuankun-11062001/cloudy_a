@@ -1,0 +1,683 @@
+@use "./variable" as v;
+@use "./mixin" as m;
+@use "./breakpoint" as b;
+
+.box_editor {
+  @include b.xl {
+    .control_group {
+      @include m.dynamicAlign(
+        $wrap: wrap,
+        $align: center,
+        $gap: v.$spacing v.$spacing * 2
+      );
+      svg {
+        width: v.$spacing * 2;
+        height: v.$spacing * 2;
+        object-fit: contain;
+      }
+
+      .clear_node,
+      .clearMark,
+      .paragraph,
+      .highlight,
+      .quote,
+      .redo {
+        button {
+          @include m.transition;
+          @include m.button(
+            $padding: v.$spacing v.$spacing * 2,
+            $color: v.$color_gray,
+            $color_hover: v.$color_white,
+            $background_hover: v.$color_pink
+          );
+          &:hover {
+            svg {
+              path {
+                fill: v.$color_white;
+              }
+            }
+          }
+        }
+      }
+
+      .undo,
+      .color,
+      .image,
+      .video {
+        button {
+          @include m.transition;
+          @include m.button(
+            $padding: v.$spacing v.$spacing * 2,
+            $color: v.$color_gray,
+            $color_hover: v.$color_white,
+            $background_hover: v.$color_pink
+          );
+          &:hover {
+            svg {
+              path {
+                stroke: v.$color_white;
+              }
+            }
+          }
+        }
+      }
+
+      .link {
+        position: relative;
+        p {
+          @include m.transition;
+          @include m.button(
+            $padding: v.$spacing v.$spacing * 2,
+            $color: v.$color_gray
+          );
+        }
+        &:hover {
+          p {
+            background: v.$color_pink;
+            color: v.$color_white;
+          }
+          .link_childs {
+            top: 110%;
+            opacity: 1;
+            z-index: 3;
+            height: v.$spacing * 10;
+            overflow: auto;
+          }
+        }
+        &_childs {
+          @include m.dynamicPosition($pos: absolute, $top: 120%, $left: 0);
+          @include m.dynamicAlign($direction: column);
+          width: v.$spacing * 13;
+          height: 0;
+          background: v.$color_white;
+          z-index: -1;
+          padding: v.$spacing;
+          border-radius: v.$spacing;
+          box-shadow: 0 0 v.$spacing * 2 0 rgba(v.$color_gray, 0.2);
+          opacity: 0;
+          overflow: hidden;
+          @include m.transition($second: 1s);
+
+          button {
+            @include m.button(
+              $fontsize: v.$spacing * 1.4,
+              $color: v.$color_gray,
+              $color_hover: v.$color_white !important,
+              $background_hover: v.$color_pink,
+              $color_active: v.$color_white,
+              $background_active: v.$color_pink
+            );
+            width: 100%;
+          }
+        }
+      }
+      .table {
+        position: relative;
+        p {
+          @include m.transition;
+          @include m.button(
+            $padding: v.$spacing v.$spacing * 2,
+            $color: v.$color_gray
+          );
+        }
+        &:hover {
+          p {
+            background: v.$color_pink;
+            color: v.$color_white;
+          }
+          .table_childs {
+            top: 110%;
+            opacity: 1;
+            z-index: 3;
+            height: v.$spacing * 50;
+            overflow: auto;
+          }
+        }
+        &_childs {
+          @include m.dynamicPosition($pos: absolute, $top: 120%, $left: 0);
+          @include m.dynamicAlign($direction: column);
+          width: v.$spacing * 40;
+          height: 0;
+          background: v.$color_white;
+          z-index: -1;
+          padding: v.$spacing;
+          border-radius: v.$spacing;
+          box-shadow: 0 0 v.$spacing * 2 0 rgba(v.$color_gray, 0.2);
+          opacity: 0;
+          overflow: hidden;
+          @include m.transition($second: 1s);
+
+          button {
+            @include m.button(
+              $fontsize: v.$spacing * 1.4,
+              $color: v.$color_gray,
+              $color_hover: v.$color_white !important,
+              $background_hover: v.$color_pink,
+              $color_active: v.$color_white,
+              $background_active: v.$color_pink
+            );
+            width: 100%;
+          }
+        }
+      }
+
+      .align {
+        position: relative;
+        p {
+          @include m.transition;
+          @include m.button(
+            $padding: v.$spacing v.$spacing * 2,
+            $color: v.$color_gray
+          );
+        }
+        &:hover {
+          p {
+            background: v.$color_pink;
+            color: v.$color_white;
+          }
+
+          .align_childs {
+            top: 110%;
+            opacity: 1;
+            z-index: 3;
+            height: v.$spacing * 20;
+            overflow: auto;
+          }
+        }
+        &_childs {
+          @include m.dynamicPosition($pos: absolute, $top: 120%, $left: 0);
+          @include m.dynamicAlign($direction: column);
+          width: v.$spacing * 10;
+          height: 0;
+          background: v.$color_white;
+          z-index: -1;
+          padding: v.$spacing;
+          border-radius: v.$spacing;
+          box-shadow: 0 0 v.$spacing * 2 0 rgba(v.$color_gray, 0.2);
+          opacity: 0;
+          overflow: hidden;
+          @include m.transition($second: 1s);
+
+          button {
+            @include m.button(
+              $fontsize: v.$spacing * 1.4,
+              $color: v.$color_gray,
+              $color_hover: v.$color_white !important,
+              $background_hover: v.$color_pink,
+              $color_active: v.$color_white,
+              $background_active: v.$color_pink
+            );
+            width: 100%;
+          }
+        }
+      }
+
+      .style {
+        position: relative;
+        p {
+          @include m.transition;
+          @include m.button(
+            $padding: v.$spacing v.$spacing * 2,
+            $color: v.$color_gray
+          );
+        }
+        &:hover {
+          p {
+            background: v.$color_pink;
+            color: v.$color_white;
+          }
+          .style_childs {
+            top: 110%;
+            opacity: 1;
+            z-index: 3;
+            height: v.$spacing * 20;
+            overflow: auto;
+          }
+        }
+        &_childs {
+          @include m.dynamicPosition($pos: absolute, $top: 120%, $left: 0);
+          @include m.dynamicAlign($direction: column);
+          width: v.$spacing * 10;
+          height: 0;
+          background: v.$color_white;
+          z-index: -1;
+          padding: v.$spacing;
+          border-radius: v.$spacing;
+          box-shadow: 0 0 v.$spacing * 2 0 rgba(v.$color_gray, 0.2);
+          opacity: 0;
+          overflow: hidden;
+          @include m.transition($second: 1s);
+
+          button {
+            @include m.button(
+              $fontsize: v.$spacing * 1.4,
+              $color: v.$color_gray,
+              $background_hover: v.$color_pink
+            );
+            @include m.transition;
+            &:hover {
+              svg {
+                path {
+                  fill: v.$color_white;
+                }
+              }
+            }
+            width: 100%;
+          }
+        }
+      }
+
+      .heading {
+        position: relative;
+        p {
+          @include m.transition;
+          @include m.button(
+            $padding: v.$spacing v.$spacing * 2,
+            $color: v.$color_gray
+          );
+        }
+        &:hover {
+          p {
+            background: v.$color_pink;
+            color: v.$color_white;
+          }
+          .heading_childs {
+            top: 110%;
+            opacity: 1;
+            z-index: 3;
+            height: v.$spacing * 35;
+            overflow: auto;
+          }
+        }
+        &_childs {
+          @include m.dynamicPosition($pos: absolute, $top: 120%, $left: 0);
+          @include m.dynamicAlign($direction: column);
+          width: v.$spacing * 10;
+          height: 0;
+          background: v.$color_white;
+          z-index: -1;
+          padding: v.$spacing;
+          border-radius: v.$spacing;
+          box-shadow: 0 0 v.$spacing * 2 0 rgba(v.$color_gray, 0.2);
+          opacity: 0;
+          overflow: hidden;
+          @include m.transition($second: 1s);
+
+          button {
+            @include m.button(
+              $fontsize: v.$spacing * 1.4,
+              $color: v.$color_gray,
+              $background_hover: v.$color_pink
+            );
+            width: 100%;
+            @include m.transition;
+
+            &:hover {
+              svg {
+                path {
+                  stroke: v.$color_white;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .list {
+        position: relative;
+        p {
+          @include m.transition;
+          @include m.button(
+            $padding: v.$spacing v.$spacing * 2,
+            $color: v.$color_gray
+          );
+        }
+        &:hover {
+          p {
+            background: v.$color_pink;
+            color: v.$color_white;
+          }
+          .list_childs {
+            top: 110%;
+            opacity: 1;
+            z-index: 3;
+            height: v.$spacing * 15;
+            overflow: auto;
+          }
+        }
+        &_childs {
+          @include m.dynamicPosition($pos: absolute, $top: 120%, $left: 0);
+          @include m.dynamicAlign($direction: column);
+          width: v.$spacing * 10;
+          height: 0;
+          background: v.$color_white;
+          z-index: -1;
+          padding: v.$spacing;
+          border-radius: v.$spacing;
+          box-shadow: 0 0 v.$spacing * 2 0 rgba(v.$color_gray, 0.2);
+          opacity: 0;
+          overflow: hidden;
+          @include m.transition($second: 1s);
+
+          button {
+            @include m.button(
+              $fontsize: v.$spacing * 1.4,
+              $color: v.$color_gray,
+
+              $background_hover: v.$color_pink
+            );
+            width: 100%;
+            &:hover {
+              svg {
+                path {
+                  stroke: v.$color_white;
+                  fill: v.$color_white;
+                }
+              }
+            }
+          }
+        }
+      }
+      .code {
+        position: relative;
+        p {
+          @include m.transition;
+          @include m.button(
+            $padding: v.$spacing v.$spacing * 2,
+            $color: v.$color_gray
+          );
+        }
+        &:hover {
+          p {
+            background: v.$color_pink;
+            color: v.$color_white;
+          }
+          .code_childs {
+            top: 110%;
+            opacity: 1;
+            z-index: 3;
+            height: v.$spacing * 15;
+            overflow: auto;
+          }
+        }
+        &_childs {
+          @include m.dynamicPosition($pos: absolute, $top: 120%, $left: 0);
+          @include m.dynamicAlign($direction: column);
+          width: v.$spacing * 10;
+          height: 0;
+          background: v.$color_white;
+          z-index: -1;
+          padding: v.$spacing;
+          border-radius: v.$spacing;
+          box-shadow: 0 0 v.$spacing * 2 0 rgba(v.$color_gray, 0.2);
+          opacity: 0;
+          overflow: hidden;
+          @include m.transition($second: 1s);
+
+          button {
+            @include m.button(
+              $fontsize: v.$spacing * 1.4,
+              $color: v.$color_gray,
+
+              $background_hover: v.$color_pink
+            );
+            width: 100%;
+            &:hover {
+              svg {
+                path {
+                  stroke: v.$color_white;
+                  fill: v.$color_white;
+                }
+              }
+            }
+          }
+        }
+      }
+      .line {
+        position: relative;
+        p {
+          @include m.transition;
+          @include m.button(
+            $padding: v.$spacing v.$spacing * 2,
+            $color: v.$color_gray
+          );
+        }
+        &:hover {
+          p {
+            background: v.$color_pink;
+            color: v.$color_white;
+          }
+          .line_childs {
+            top: 110%;
+            opacity: 1;
+            z-index: 3;
+            height: v.$spacing * 15;
+            overflow: auto;
+          }
+        }
+        &_childs {
+          @include m.dynamicPosition($pos: absolute, $top: 120%, $left: 0);
+          @include m.dynamicAlign($direction: column);
+          width: v.$spacing * 10;
+          height: 0;
+          background: v.$color_white;
+          z-index: -1;
+          padding: v.$spacing;
+          border-radius: v.$spacing;
+          box-shadow: 0 0 v.$spacing * 2 0 rgba(v.$color_gray, 0.2);
+          opacity: 0;
+          overflow: hidden;
+          @include m.transition($second: 1s);
+
+          button {
+            @include m.button(
+              $fontsize: v.$spacing * 1.4,
+              $color: v.$color_gray,
+              $background_hover: v.$color_pink
+            );
+            width: 100%;
+            &:hover {
+              svg {
+                path {
+                  stroke: v.$color_white;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.tiptap {
+  padding: v.$spacing * 2;
+  &.ProseMirror {
+    height: 60dvh;
+    overflow: auto;
+  }
+  :first-child {
+    margin-top: 0;
+  }
+
+  // youtube
+  iframe {
+    width: 70%;
+    height: v.$spacing * 35;
+    object-fit: cover;
+    @include m.dynamicPosition(
+      $pos: relative,
+      $left: 50%,
+      $transform: translateX(-50%)
+    );
+  }
+
+  p {
+    font-size: v.$spacing * 1.6;
+  }
+
+  // img
+
+  img {
+    width: 60%;
+    height: 100%;
+    object-fit: cover;
+    @include m.dynamicPosition(
+      $pos: relative,
+      $left: 50%,
+      $transform: translateX(-50%)
+    );
+  }
+
+  /* List styles */
+  ul {
+    list-style: circle;
+  }
+  ol {
+    list-style: decimal;
+  }
+  ul,
+  ol {
+    padding: 0 1rem;
+    margin: 1.25rem 1rem 1.25rem 0.4rem;
+
+    li p {
+      margin-top: 0.25em;
+      margin-bottom: 0.25em;
+    }
+  }
+
+  /* Heading styles */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: 1.1;
+    margin-top: 2.5rem;
+    text-wrap: pretty;
+  }
+
+  h1,
+  h2 {
+    margin-top: 3.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    font-size: v.$spacing * 4;
+  }
+
+  h2 {
+    font-size: v.$spacing * 3;
+  }
+
+  h3 {
+    font-size: v.$spacing * 2;
+  }
+
+  h4,
+  h5,
+  h6 {
+    font-size: v.$spacing * 1.8;
+  }
+
+  /* Code and preformatted text styles */
+  code {
+    background-color: v.$color_gray;
+    border-radius: 0.4rem;
+    color: v.$color_black;
+    font-size: 0.85rem;
+    padding: 0.25em 0.3em;
+  }
+
+  pre {
+    background: v.$color_gray;
+    border-radius: 0.5rem;
+    color: v.$color_black;
+    font-family: "JetBrainsMono", monospace;
+    margin: 1.5rem 0;
+    padding: 0.75rem 1rem;
+
+    code {
+      background: none;
+      color: inherit;
+      font-size: v.$spacing * 1.6;
+      padding: 0;
+    }
+  }
+
+  blockquote {
+    border-left: 3px solid v.$color_gray;
+    margin: 1.5rem 0;
+    padding-left: 1rem;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid v.$color_gray;
+    margin: 2rem 0;
+  }
+
+  // table
+  table {
+    border-collapse: collapse;
+    margin: 0;
+    overflow: hidden;
+    table-layout: fixed;
+    width: 100%;
+
+    td,
+    th {
+      border: 1px solid v.$color_gray;
+      box-sizing: border-box;
+      min-width: 1em;
+      padding: 6px 8px;
+      position: relative;
+      vertical-align: top;
+
+      > * {
+        margin-bottom: 0;
+      }
+    }
+
+    th {
+      background-color: v.$color_gray;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .selectedCell:after {
+      background: v.$color_blue;
+      content: "";
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      pointer-events: none;
+      position: absolute;
+      z-index: 2;
+    }
+
+    .column-resize-handle {
+      background-color: v.$color_pink;
+      bottom: -2px;
+      pointer-events: none;
+      position: absolute;
+      right: -2px;
+      top: 0;
+      width: 4px;
+    }
+  }
+
+  .tableWrapper {
+    margin: 1.5rem 0;
+    overflow-x: auto;
+  }
+
+  &.resize-cursor {
+    cursor: ew-resize;
+    cursor: col-resize;
+  }
+}

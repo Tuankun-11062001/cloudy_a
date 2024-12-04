@@ -1,0 +1,55 @@
+@use "./breakpoint" as b;
+@use "./variable" as v;
+@use "./mixin" as m;
+
+.web_navigation {
+  @include b.xl {
+    @include m.dynamicPosition($pos: fixed, $left: 0, $top: 0, $bottom: 0);
+    width: 18%;
+    background: v.$color_white;
+    border-top-right-radius: v.$spacing * 2;
+    border-bottom-right-radius: v.$spacing * 2;
+    box-shadow: 0 0 v.$spacing * 2 0 rgba(v.$color_gray, 0.3);
+    padding: v.$spacing * 2;
+    overflow: auto;
+    @include m.glass(
+      $blur: v.$spacing - 0.5,
+      $background: rgba(v.$color_white, 0.4)
+    );
+    @include m.dynamicAlign(
+      $direction: column,
+      $align: center,
+      $gap: v.$spacing * 2
+    );
+    img {
+      width: v.$spacing * 25;
+      height: v.$spacing * 15;
+      object-fit: contain;
+    }
+    a {
+      &:first-child {
+        background: unset;
+      }
+
+      display: block;
+      width: 100%;
+      padding: v.$spacing * 2 v.$spacing;
+      text-align: center;
+      background: rgba(v.$color_white, 0.4);
+      border-radius: v.$spacing;
+      color: v.$color_gray;
+      @include m.transition;
+      &:hover {
+        &:first-child {
+          background: unset;
+        }
+        color: v.$color_black;
+        background: v.$color_white;
+      }
+      &.active {
+        color: v.$color_black;
+        background: v.$color_white;
+      }
+    }
+  }
+}

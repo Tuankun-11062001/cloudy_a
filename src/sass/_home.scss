@@ -1,0 +1,118 @@
+@use "breakpoint" as b;
+@use "mixin" as m;
+@use "variable" as v;
+
+.home {
+  @include b.xl {
+    @include m.dynamicAlign(center, center);
+    height: 100dvh;
+    .login {
+      @include m.dynamicAlign(
+        $direction: column,
+        $gap: v.$spacing * 3,
+        $justify: center,
+        $align: center
+      );
+      width: 70%;
+      h1 {
+        font-size: v.$spacing * 3;
+        font-weight: 500;
+        color: v.$color_white;
+      }
+
+      input {
+        width: 40%;
+        padding: v.$spacing v.$spacing * 2;
+        border-radius: v.$spacing * 2;
+        border: none;
+        font-size: v.$spacing * 1.6;
+        outline: none;
+        @include m.transition();
+        text-align: center;
+        &:focus {
+          box-shadow: 0 0 v.$spacing * 2 0 rgba(v.$color_white, 0.2);
+        }
+      }
+
+      p {
+        font-size: v.$spacing * 1.6;
+        background: v.$color_white;
+        color: v.$color_gray;
+        padding: v.$spacing v.$spacing * 3;
+        border-radius: v.$spacing * 3;
+      }
+
+      span {
+        font-size: v.$spacing * 1.4;
+        color: v.$color_white;
+      }
+    }
+
+    .admin {
+      @include m.dynamicAlign(
+        $justify: center,
+        $align: center,
+        $gap: v.$spacing * 3
+      );
+      width: 50%;
+      &_plan,
+      &_web {
+        @include m.glass($background: rgba(v.$color_white, 0.6));
+
+        padding: v.$spacing * 2;
+        border-radius: v.$spacing * 2;
+        width: 30%;
+        transform: scale(0.9);
+        @include m.transition($second: 1s);
+        cursor: pointer;
+        a {
+          @include m.dynamicAlign(center, center, $direction: column);
+        }
+        &:hover {
+          transform: scale(1);
+          @include m.glass($background: rgba(v.$color_white, 1));
+          svg {
+            path {
+              stroke: v.$color_black;
+              fill: v.$color_black;
+            }
+            rect,
+            ellipse,
+            circle {
+              stroke: v.$color_black;
+            }
+          }
+
+          h1,
+          p {
+            color: v.$color_black;
+          }
+        }
+        svg {
+          width: v.$spacing * 5;
+          height: v.$spacing * 5;
+          object-fit: contain;
+          path {
+            stroke: v.$color_gray;
+            fill: v.$color_gray;
+          }
+          rect,
+          ellipse,
+          circle {
+            stroke: v.$color_gray;
+          }
+        }
+
+        h1 {
+          font-size: v.$spacing * 3;
+          color: v.$color_gray;
+        }
+
+        p {
+          font-size: v.$spacing * 1.6;
+          color: v.$color_gray;
+        }
+      }
+    }
+  }
+}

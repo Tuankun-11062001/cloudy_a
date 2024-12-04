@@ -1,0 +1,335 @@
+@use "./breakpoint" as b;
+@use "variable" as v;
+@use "mixin" as m;
+
+// card
+
+.communication_card {
+  @include b.xl {
+    @include m.dynamicAlign($align: center);
+    width: 100%;
+    text-align: center;
+    padding: v.$spacing 0;
+    border-radius: v.$spacing;
+    background: rgba(v.$color_white, 0.8);
+    color: v.$color_gray;
+    @include m.transition;
+    cursor: pointer;
+    p:has(svg) {
+      @include m.transition;
+
+      svg {
+        path,
+        circle {
+          stroke: v.$color_gray;
+          fill: v.$color_gray;
+        }
+      }
+    }
+
+    .share {
+      svg {
+        path {
+          stroke: v.$color_gray;
+          fill: unset !important;
+        }
+      }
+    }
+
+    &:hover {
+      background: v.$color_white;
+      color: v.$color_black;
+      box-shadow: 0 0 v.$spacing * 2 0 rgba(v.$color_gray, 0.5);
+
+      svg {
+        &:nth-child(3) {
+          path {
+            fill: unset;
+          }
+        }
+        path,
+        circle {
+          stroke: v.$color_black;
+          fill: v.$color_black;
+        }
+      }
+    }
+    span {
+      width: v.$spacing * 3;
+    }
+    .name {
+      width: v.$spacing * 15;
+    }
+    .cloudy,
+    .comment,
+    .share {
+      width: v.$spacing * 15;
+      @include m.dynamicAlign($align: center);
+    }
+    .time {
+      width: v.$spacing * 12;
+    }
+    .check,
+    .motify {
+      flex: 1;
+    }
+  }
+}
+
+.communication_detail_card {
+  @include b.xl {
+    padding: v.$spacing * 2;
+    background: v.$color_white;
+    border-radius: v.$spacing * 2;
+    @include m.dynamicAlign($direction: column, $gap: v.$spacing * 2);
+
+    &_head {
+      h3 {
+        font-size: v.$spacing * 2;
+        font-weight: 400;
+        color: v.$color_gray;
+        font-style: italic;
+      }
+    }
+    &_info {
+      @include m.dynamicAlign($direction: column);
+      color: v.$color_gray;
+      p:has(svg) {
+        @include m.dynamicAlign($align: center);
+        path {
+          fill: v.$color_gray;
+        }
+      }
+      .check {
+        svg {
+          path {
+            fill: v.$color_pink;
+          }
+        }
+      }
+      &_g {
+        width: 100%;
+        @include m.dynamicAlign($align: center);
+      }
+    }
+
+    &_controls {
+      @include m.dynamicAlign($align: center);
+      p {
+        @include m.transition;
+        &:first-child {
+          @include m.button(
+            $color: v.$color_white,
+            $background: v.$color_blue,
+            $padding: v.$spacing v.$spacing * 3,
+            $background_hover: rgba(v.$color_blue, 0.8),
+            $color_hover: v.$color_white
+          );
+        }
+        &:last-child {
+          @include m.button(
+            $color: v.$color_white,
+            $background: v.$color_pink,
+            $padding: v.$spacing v.$spacing * 3,
+            $background_hover: rgba(v.$color_pink, 0.8),
+            $color_hover: v.$color_white
+          );
+        }
+      }
+    }
+
+    &_confirm {
+      background: rgba(v.$color_gray, 0.1);
+      width: 100%;
+      padding: v.$spacing;
+      border-radius: v.$spacing;
+      @include m.dynamicAlign(
+        $direction: column,
+        $align: center,
+        $gap: v.$spacing * 2
+      );
+      h3 {
+        font-size: v.$spacing * 1.8;
+        font-weight: 400;
+        color: v.$color_gray;
+      }
+      &_g {
+        @include m.dynamicAlign($align: center, $gap: v.$spacing * 2);
+        p {
+          @include m.transition;
+          &:first-child {
+            @include m.button(
+              $fontsize: v.$spacing * 1.4,
+              $color: v.$color_white,
+              $background: rgba(v.$color_gray, 0.7),
+              $padding: v.$spacing v.$spacing * 3,
+              $background_hover: rgba(v.$color_blue, 0.8),
+              $color_hover: v.$color_white
+            );
+          }
+          &:last-child {
+            @include m.button(
+              $color: v.$color_white,
+              $background: rgba(v.$color_gray, 0.7),
+              $padding: v.$spacing v.$spacing * 3,
+              $background_hover: rgba(v.$color_pink, 0.8),
+              $color_hover: v.$color_white
+            );
+          }
+        }
+      }
+    }
+
+    &_content {
+      height: v.$spacing * 50;
+      width: 100%;
+      overflow: auto;
+      iframe,
+      img {
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+
+    &_comments {
+      .item {
+        @include m.dynamicAlign();
+        img {
+          width: v.$spacing * 3.5;
+          height: v.$spacing * 3.5;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+        &_content {
+          @include m.dynamicAlign($direction: column, $gap: v.$spacing - 0.5);
+          h4 {
+            font-size: v.$spacing * 1.6;
+            font-weight: 500;
+          }
+          p {
+            font-size: v.$spacing * 1.5;
+            font-weight: 400;
+          }
+        }
+        &_child {
+          @include m.dynamicAlign();
+          &_content {
+            @include m.dynamicAlign($direction: column, $gap: v.$spacing - 0.5);
+            h4 {
+              font-size: v.$spacing * 1.6;
+              font-weight: 500;
+            }
+            p {
+              font-size: v.$spacing * 1.5;
+              font-weight: 400;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// page
+
+.communication {
+  @include b.xl {
+    @include m.dynamicAlign($direction: column, $gap: v.$spacing * 2);
+
+    &_head {
+      @include m.dynamicAlign($align: center);
+      a {
+        background: rgba(v.$color_white, 0.8);
+        padding: v.$spacing v.$spacing * 2;
+        border-radius: v.$spacing * 2;
+        color: v.$color_gray;
+        @include m.transition();
+        &:hover {
+          background: v.$color_white;
+          color: v.$color_black;
+        }
+      }
+      p {
+        @include m.button(
+          $color: v.$color_gray,
+          $background: rgba(v.$color_white, 0.8),
+          $padding: v.$spacing v.$spacing * 3,
+          $borderRadius: v.$spacing * 3,
+          $color_hover: v.$color_black,
+          $background_hover: v.$color_white,
+          $color_active: v.$color_black,
+          $background_active: v.$color_white
+        );
+      }
+    }
+
+    &_content {
+      @include m.dynamicAlign($gap: v.$spacing * 3);
+      width: 100%;
+      &_list {
+        @include m.dynamicAlign($direction: column, $gap: v.$spacing * 2);
+        flex: 1;
+      }
+
+      &_review {
+        flex: 0.5;
+        height: 90dvh;
+        overflow: auto;
+        background: v.$color_white;
+        border-radius: v.$spacing * 2;
+      }
+    }
+
+    &_create {
+      @include m.dynamicPosition(
+        $pos: fixed,
+        $left: 0,
+        $top: 0,
+        $right: 0,
+        $bottom: 0
+      );
+      @include m.glass($blur: v.$spacing - 0.5);
+      @include m.dynamicAlign(center, center);
+      &_content {
+        width: 50%;
+        background: v.$color_white;
+        padding: v.$spacing * 2;
+        border-radius: v.$spacing * 2;
+        box-shadow: 0 0 v.$spacing * 2 0 rgba(v.$color_gray, 0.5);
+        .head {
+          @include m.dynamicAlign($justify: space-between, $align: center);
+          margin-bottom: v.$spacing * 2;
+          h1 {
+            font-size: v.$spacing * 2;
+            font-weight: 500;
+          }
+          p {
+            cursor: pointer;
+          }
+        }
+
+        select {
+          margin: v.$spacing * 2 0;
+          width: 30%;
+          padding: v.$spacing v.$spacing * 2;
+          border-radius: v.$spacing * 2;
+          border: 0.1rem solid v.$color_gray;
+          font-size: v.$spacing * 1.6;
+          outline: none;
+        }
+        .submit {
+          margin-left: auto;
+          margin-top: v.$spacing * 2;
+          width: max-content;
+          @include m.transition;
+          @include m.button(
+            $background: rgba(v.$color_gray, 0.2),
+            $padding: v.$spacing v.$spacing * 3,
+            $color_hover: v.$color_white,
+            $background_hover: v.$color_gray
+          );
+        }
+      }
+    }
+  }
+}

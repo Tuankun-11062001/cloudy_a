@@ -16,7 +16,7 @@ import Highlight from "@tiptap/extension-highlight";
 import TextAlign from "@tiptap/extension-text-align";
 import { EditorProvider, useCurrentEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { appSvg } from "../../../data/svg";
 
 const MenuBar = () => {
@@ -532,10 +532,35 @@ const extensions = [
       keepMarks: true,
       keepAttributes: false, // TODO : Making this as `false` becase marks are not preserved when I try to preserve attrs, awaiting a bit of help
     },
+    hardBreak: true,
   }),
 ];
 
+const handleKeyDown = (event, editor) => {
+  if (event.key === "Enter") {
+    event.preventDefault(); // Ngăn chặn hành vi mặc định của Enter
+    editor.commands.setHardBreak(); // Sử dụng setHardBreak thay cho hành vi Enter mặc định
+  }
+};
+
 const TipTap = ({ change, state }) => {
+  const { editor } = useCurrentEditor();
+
+  // Gắn sự kiện keydown vào editor khi editor đã được khởi tạo
+  useEffect(() => {
+    if (editor) {
+      // Gắn sự kiện keydown
+      editor.on("keydown", (event) => handleKeyDown(event, editor));
+    }
+
+    // Dọn dẹp sự kiện khi component bị hủy
+    return () => {
+      if (editor) {
+        editor.off("keydown", (event) => handleKeyDown(event, editor));
+      }
+    };
+  }, [editor]);
+
   return (
     <div className="box_editor">
       <EditorProvider

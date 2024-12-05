@@ -151,6 +151,7 @@ const LyricsDetail = () => {
   };
 
   const handleSubmit = async () => {
+    console.log(dataLyrics);
     try {
       const resultAction = await dispatch(editLyricsThunk(dataLyrics));
 
